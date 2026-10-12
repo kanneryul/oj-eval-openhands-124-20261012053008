@@ -80,6 +80,12 @@ int main() {
         u--; v--;
         
         // Check if we can allocate n seats for this journey
+        // For journey from u to v, we need to check segments [u, v-1]
+        if (u >= v) {
+            std::cout << "N\n";
+            continue;
+        }
+        
         int max_seats = seg_tree.query(u, v - 1);
         
         if (max_seats + n <= k) {
