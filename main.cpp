@@ -1,4 +1,4 @@
-#include <iostream>
+#include <cstdio>
 #include <vector>
 #include <algorithm>
 
@@ -71,20 +71,20 @@ public:
 
 int main() {
     int x, k, p;
-    std::cin >> x >> k >> p;
+    scanf("%d %d %d", &x, &k, &p);
     
     SegmentTree seg_tree(x);
     
     for (int i = 0; i < p; i++) {
         int u, v, n;
-        std::cin >> u >> v >> n;
+        scanf("%d %d %d", &u, &v, &n);
         
         // Convert to 0-based indexing
         u--; v--;
         
         // For journey from u to v, we need to check segments [u, v-1]
         if (u >= v) {
-            std::cout << "N\n";
+            printf("N\n");
             continue;
         }
         
@@ -94,9 +94,9 @@ int main() {
         if (max_seats + n <= k) {
             // Allocate seats
             seg_tree.update(u, v - 1, n);
-            std::cout << "T\n";
+            printf("T\n");
         } else {
-            std::cout << "N\n";
+            printf("N\n");
         }
     }
     
